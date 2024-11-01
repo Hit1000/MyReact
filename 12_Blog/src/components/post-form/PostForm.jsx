@@ -17,7 +17,11 @@ function PostForm({ post }) {
     });
 
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user.userData);
+  const userData = useSelector((state) => state.auth.userData);
+
+  if (!userData) {
+    return <div>Loading...</div>; // Handle loading state
+  }
 
   const sumbit = async (data) => {
     if (post) {
